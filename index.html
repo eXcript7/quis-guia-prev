@@ -590,24 +590,24 @@ let resumo = "";
 
 
 
-// SITUAÇÃO DA CLIENTE
+// SITUAÇÃO
 
 if(dadosQuiz.tipo === 'gravida'){
 
 if(dadosQuiz.trabalho === 'clt'){
-resumo = "🤰 Grávida CLT";
+resumo = "Grávida CLT";
 }
 
 if(dadosQuiz.trabalho === 'mei'){
-resumo = "🤰 Grávida MEI";
+resumo = "Grávida MEI";
 }
 
 if(dadosQuiz.trabalho === 'desempregada'){
-resumo = "🤰 Grávida desempregada";
+resumo = "Grávida desempregada";
 }
 
 if(dadosQuiz.trabalho === 'nunca'){
-resumo = "🤰 Grávida sem contribuição";
+resumo = "Grávida sem contribuição";
 }
 
 }
@@ -617,19 +617,19 @@ resumo = "🤰 Grávida sem contribuição";
 if(dadosQuiz.tipo === 'mae'){
 
 if(dadosQuiz.trabalho === 'clt'){
-resumo = "👶 Mãe CLT";
+resumo = "Mãe CLT";
 }
 
 if(dadosQuiz.trabalho === 'mei'){
-resumo = "👶 Mãe MEI";
+resumo = "Mãe MEI";
 }
 
 if(dadosQuiz.trabalho === 'desempregada'){
-resumo = "👶 Mãe desempregada";
+resumo = "Mãe desempregada";
 }
 
 if(dadosQuiz.trabalho === 'nunca'){
-resumo = "👶 Mãe sem contribuição";
+resumo = "Mãe sem contribuição";
 }
 
 }
@@ -648,9 +648,7 @@ const dia = String(data.getDate()).padStart(2,'0');
 const mes = String(data.getMonth()+1).padStart(2,'0');
 const ano = data.getFullYear();
 
-dataInfo = `
-📅 Data de nascimento do bebê: ${dia}/${mes}/${ano}
-`;
+dataInfo = `Data de nascimento do bebê: ${dia}/${mes}/${ano}`;
 
 }
 
@@ -668,9 +666,7 @@ const diaDem = String(dataDem.getDate()).padStart(2,'0');
 const mesDem = String(dataDem.getMonth()+1).padStart(2,'0');
 const anoDem = dataDem.getFullYear();
 
-demissaoInfo = `
-📄 Data da demissão: ${diaDem}/${mesDem}/${anoDem}
-`;
+demissaoInfo = `Data da demissão: ${diaDem}/${mesDem}/${anoDem}`;
 
 }
 
@@ -682,9 +678,7 @@ let seguroInfo = "";
 
 if(dadosQuiz.seguro){
 
-seguroInfo = `
-💰 Recebeu seguro-desemprego: ${dadosQuiz.seguro}
-`;
+seguroInfo = `Recebeu seguro-desemprego: ${dadosQuiz.seguro}`;
 
 }
 
@@ -699,9 +693,7 @@ dadosQuiz.tipo === 'mae' &&
 checarDentroDoPrazoDia15()
 ){
 
-urgenciaInfo = `
-🚨 Cliente dentro da regra do dia 15.
-`;
+urgenciaInfo = "Cliente dentro da regra do dia 15";
 
 }
 
@@ -709,32 +701,38 @@ urgenciaInfo = `
 
 // MENSAGEM FINAL
 
-const mensagem = `Olá! Fiz a análise do Salário Maternidade.
+const linhas = [
 
-👩 Nome: ${dadosQuiz.nome}
+"Olá! Fiz a análise do Salário Maternidade.\n",
 
-📌 Situação:
-${resumo}
+`Nome: ${dadosQuiz.nome}`,
 
-${dataInfo}
+`Situação: ${resumo}`,
 
-${demissaoInfo}
+dataInfo,
 
-${seguroInfo}
+demissaoInfo,
 
-${urgenciaInfo}
-`;
+seguroInfo,
+
+urgenciaInfo
+
+].filter(Boolean);
 
 
 
-// LINK WHATSAPP
+const mensagem = linhas.join('\n');
+
+
+
+// WHATSAPP
 
 document.getElementById('linkWhats').href =
 `https://wa.me/${SEU_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
 
 
 
-// MOSTRAR RESULTADO
+// RESULTADO
 
 esconderTudo();
 
