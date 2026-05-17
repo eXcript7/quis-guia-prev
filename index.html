@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Quiz Salário Maternidade</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:Arial,sans-serif;
+background:#f7f4ef;
+display:flex;
+justify-content:center;
+padding:20px;
+}
+
+.quiz-container{
+width:100%;
+max-width:430px;
+}
+
+
+
+/* HERO */
+
+.hero{
+background:#f7f4ef;
+}
+
+.hero-image img{
+width:100%;
+border-radius:28px;
+display:block;
+}
+
+.badge{
+display:inline-block;
+margin-top:18px;
+background:#eef6ea;
+color:#497a3f;
+padding:10px 16px;
+border-radius:999px;
+font-size:14px;
+font-weight:bold;
+}
+
+.hero h1{
+font-size:46px;
+line-height:1.05;
+margin:22px 0 18px;
+font-weight:800;
+color:#111827;
+}
+
+.hero h1 span{
+color:#4d7c0f;
+}
+
+.subtitle{
+font-size:21px;
+line-height:1.5;
+color:#4b5563;
+margin-bottom:30px;
+}
+
+.btn-start{
+width:100%;
+background:#3f7d32;
+color:#fff;
+border:none;
+padding:22px;
+font-size:24px;
+font-weight:bold;
+border-radius:22px;
+cursor:pointer;
+box-shadow:0 8px 20px rgba(63,125,50,.25);
+transition:.2s;
+}
+
+.btn-start:hover{
+transform:scale(1.02);
+}
+
+.mini-benefits{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+justify-content:center;
+margin-top:22px;
+}
+
+.benefit{
+background:#f3f4f6;
+padding:10px 16px;
+border-radius:999px;
+font-size:15px;
+font-weight:600;
+color:#374151;
+}
+
+
+
+/* QUIZ */
+
+.step{
+display:none;
+background:#fff;
+padding:25px;
+border-radius:24px;
+margin-top:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+.step.active{
+display:block;
+}
+
+.quiz-title{
+font-size:30px;
+font-weight:800;
+color:#111827;
+margin-bottom:10px;
+}
+
+.quiz-subtitle{
+font-size:17px;
+color:#6b7280;
+line-height:1.5;
+margin-bottom:20px;
+}
+
+.options-group{
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+
+.btn-option{
+background:#fff;
+border:2px solid #e5e7eb;
+padding:18px;
+border-radius:18px;
+font-size:17px;
+font-weight:600;
+cursor:pointer;
+text-align:left;
+transition:.2s;
+}
+
+.btn-option:hover{
+border-color:#3f7d32;
+background:#f0fdf4;
+}
+
+input{
+width:100%;
+padding:18px;
+border-radius:16px;
+border:2px solid #e5e7eb;
+font-size:16px;
+margin-top:15px;
+}
+
+.btn-next{
+width:100%;
+background:#3f7d32;
+color:#fff;
+border:none;
+padding:18px;
+border-radius:18px;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+margin-top:18px;
+}
+
+
+
+/* RESULTADOS */
+
+.result-card{
+display:none;
+background:#fff;
+padding:25px;
+border-radius:24px;
+margin-top:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.08);
+text-align:center;
+}
+
+.result-card h1{
+font-size:32px;
+margin-bottom:15px;
+color:#111827;
+}
+
+.result-card p{
+font-size:18px;
+line-height:1.6;
+color:#4b5563;
+}
+
+.alert-box{
+background:#fff7ed;
+border:2px dashed #f59e0b;
+padding:18px;
+border-radius:18px;
+margin:20px 0;
+text-align:left;
+}
+
+.btn-whatsapp{
+display:block;
+background:#22c55e;
+color:#fff;
+text-decoration:none;
+padding:18px;
+border-radius:18px;
+font-size:20px;
+font-weight:bold;
+margin-top:25px;
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:480px){
+
+.hero h1{
+font-size:36px;
+}
+
+.subtitle{
+font-size:18px;
+}
+
+.btn-start{
+font-size:20px;
+padding:18px;
+}
+
+.quiz-title{
+font-size:26px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="quiz-container">
+
+<!-- HERO -->
+
+<div class="hero" id="hero">
+
+<div class="hero-image">
+
+
+
+</div>
+
+<div class="badge">
+💗 Salário-maternidade INSS
+</div>
+
+<h1>
+Você pode ter direito a até
+<span>R$ 6.484</span> do INSS.
+Mesmo desempregada.
+</h1>
+
+<p class="subtitle">
+Análise gratuita e rápida para grávidas e mães.
+Descubra em menos de 1 minuto se você pode receber o salário maternidade.
+</p>
+
+<button class="btn-start" onclick="iniciarQuiz()">
+Quero descobrir se tenho direito →
+</button>
+
+<div class="mini-benefits">
+
+<div class="benefit">
+✅ 100% online
+</div>
+
+<div class="benefit">
+✅ Sem burocracia
+</div>
+
+<div class="benefit">
+✅ Sem pagamento antecipado
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- QUIZ -->
+
+<div class="step" id="step1">
+
+<div class="quiz-title">
+Qual é o seu nome?
+</div>
+
+<div class="quiz-subtitle">
+Vamos iniciar sua análise gratuita.
+</div>
+
+<input type="text" id="nomeLead" placeholder="Digite seu nome">
+
+<button class="btn-next" onclick="acaoNome()">
+Continuar
+</button>
+
+</div>
+
+
+
+<div class="step" id="step2">
+
+<div class="quiz-title">
+Qual é o seu momento atual?
+</div>
+
+<div class="options-group">
+
+<button class="btn-option" onclick="acaoMomento('gravida')">
+🤰 Estou grávida
+</button>
+
+<button class="btn-option" onclick="acaoMomento('mae')">
+👶 Meu bebê já nasceu
+</button>
+
+</div>
+
+</div>
+
+
+
+<div class="step" id="step3">
+
+<div class="quiz-title">
+Qual a data de nascimento do bebê?
+</div>
+
+<div class="quiz-subtitle">
+Informe a data de nascimento do bebê.
+</div>
+
+<input type="date" id="dataNascimento">
+
+<button class="btn-next" onclick="acaoData()">
+Continuar
+</button>
+
+</div>
+
+
+
+<div class="step" id="step4">
+
+<div class="quiz-title">
+Qual era sua situação de trabalho?
+</div>
+
+<div class="options-group">
+
+<button class="btn-option" onclick="acaoTrabalho('clt')">
+Carteira assinada (CLT)
+</button>
+
+<button class="btn-option" onclick="acaoTrabalho('mei')">
+MEI / Autônoma
+</button>
+
+<button class="btn-option" onclick="acaoTrabalho('desempregada')">
+Desempregada (já trabalhei CLT)
+</button>
+
+<button class="btn-option" onclick="acaoTrabalho('nunca')">
+Nunca trabalhei registrada
+</button>
+
+</div>
+
+</div>
+
+
+
+<!-- APROVADO -->
+
+<div class="result-card" id="resultAprovado">
+
+<h1>
+Você pode ter direito 💛
+</h1>
+
+<div class="alert-box">
+
+<strong>
+Nossa equipe especializada irá analisar gratuitamente o seu caso.
+</strong>
+
+</div>
+
+<p>
+Clique no botão abaixo para falar agora com uma especialista no WhatsApp.
+</p>
+
+<a href="#" id="linkWhats" class="btn-whatsapp" target="_blank">
+Falar no WhatsApp
+</a>
+
+</div>
+
+
+
+<!-- REPROVADO -->
+
+<div class="result-card" id="resultReprovado">
+
+<h1>
+Análise concluída
+</h1>
+
+<p>
+No momento não encontramos indícios suficientes para aprovação automática.
+</p>
+
+<a href="#" id="linkWhats2" class="btn-whatsapp" target="_blank">
+Falar com suporte
+</a>
+
+</div>
+
+</div>
+
+<script>
+
+const SEU_WHATSAPP = "5599991189997";
+
+let dadosQuiz = {};
+
+function iniciarQuiz(){
+
+document.getElementById('hero').style.display='none';
+
+document.getElementById('step1').classList.add('active');
+
+}
+
+function trocarTela(atual,proxima){
+
+document.getElementById(atual).classList.remove('active');
+
+document.getElementById(proxima).classList.add('active');
+
+}
+
+function acaoNome(){
+
+const nome=document.getElementById('nomeLead').value.trim();
+
+if(!nome){
+
+alert('Digite seu nome');
+return;
+
+}
+
+dadosQuiz.nome=nome;
+
+trocarTela('step1','step2');
+
+}
+
+function acaoMomento(valor){
+
+dadosQuiz.tipo=valor;
+
+if(valor==='gravida'){
+
+trocarTela('step2','step4');
+
+}else{
+
+trocarTela('step2','step3');
+
+}
+
+}
+
+function acaoData(){
+
+const data=document.getElementById('dataNascimento').value;
+
+if(!data){
+
+alert('Selecione a data');
+return;
+
+}
+
+dadosQuiz.dataNascimento=data;
+
+trocarTela('step3','step4');
+
+}
+
+function acaoTrabalho(valor){
+
+dadosQuiz.trabalho=valor;
+
+validarLead();
+
+}
+
+function validarLead(){
+
+let aprovado=false;
+
+
+
+// GRÁVIDA
+
+if(dadosQuiz.tipo==='gravida'){
+
+if(
+dadosQuiz.trabalho==='clt' ||
+dadosQuiz.trabalho==='mei' ||
+dadosQuiz.trabalho==='desempregada' ||
+dadosQuiz.trabalho==='nunca'
+){
+
+aprovado=true;
+
+}
+
+}
+
+
+
+// MÃE
+
+if(dadosQuiz.tipo==='mae'){
+
+if(
+dadosQuiz.trabalho==='clt' ||
+dadosQuiz.trabalho==='mei' ||
+dadosQuiz.trabalho==='desempregada'
+){
+
+aprovado=true;
+
+}
+
+}
+
+
+
+if(aprovado){
+
+mostrarAprovado();
+
+}else{
+
+mostrarReprovado();
+
+}
+
+}
+
+function mostrarAprovado(){
+
+const mensagem=`Olá! Meu nome é ${dadosQuiz.nome} e fiz a análise do Salário Maternidade.`;
+
+document.getElementById('linkWhats').href=
+`https://wa.me/${SEU_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+
+document.getElementById('step4').classList.remove('active');
+
+document.getElementById('resultAprovado').style.display='block';
+
+}
+
+function mostrarReprovado(){
+
+const mensagem=`Olá! Meu nome é ${dadosQuiz.nome} e gostaria de uma análise manual.`;
+
+document.getElementById('linkWhats2').href=
+`https://wa.me/${SEU_WHATSAPP}?text=${encodeURIComponent(mensagem)}`;
+
+document.getElementById('step4').classList.remove('active');
+
+document.getElementById('resultReprovado').style.display='block';
+
+}
+
+</script>
+
+</body>
+</html>
